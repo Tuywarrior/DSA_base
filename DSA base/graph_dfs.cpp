@@ -44,7 +44,7 @@ int32_t main(){
 //         vis[x]=true;
 //         cout<<x<<" ";
 //         for(auto it:adj[x]){
-//           if(vis[i]==false)
+//           if(vis[it]==false)
 //           s1.push(it);
 //         }
 //       }
