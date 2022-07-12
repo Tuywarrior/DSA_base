@@ -1,1 +1,57 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define sc second
+#define fs first
 
+
+struct TrieNode{
+    bool isend;
+    TrieNode* child[26];
+};
+
+
+TrieNode* newTrieNode(){
+    TrieNode* node=new TrieNode;
+    node->isend=false;
+    for(int i=0;i<26;i++){
+        node->child[i]=NULL;
+    }
+    return node;
+}
+
+void insert(TrieNode* node,string s){
+    TrieNode* temp=node;
+    for(int i=0;i<s.length();i++){
+        int index=s[i]-'a';
+        if(temp->child[index]==NULL)
+        temp->child[index]=newTrieNode();
+        temp=temp->child[index];
+    }
+    temp->isend=true;
+}
+
+bool search(TrieNode* node,string s){
+    TrieNode* temp=node;
+    for(int i=0;i<s.length();i++){
+        int index=s[i]-'a';
+        if(temp->child[index]==NULL)return false;
+        temp=temp->child[index];
+    }
+    return temp->isend;
+}
+int main(){
+    string keys[] = {"the", "a", "there",
+                    "answer", "any", "by",
+                     "bye", "their" };
+    int n = sizeof(keys)/sizeof(keys[0]);
+    
+    TrieNode* node=newTrieNode();
+    for(int i=0;i<n;i++){
+        insert(node,keys[i]);
+    }
+    cout<<search(node,"the")<<endl;
+    cout<<search(node,"any")<<endl;
+    cout<<search(node,"there")<<endl;
+    cout<<search(node,"th")<<endl;
+}
