@@ -1,4 +1,4 @@
-//BEST CASE:O(N)
+//BEST CASE:O(N^2)
 //AVG CASE&&WORST CASE:O(N^2)
 
 
